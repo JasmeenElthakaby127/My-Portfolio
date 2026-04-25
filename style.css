@@ -1,0 +1,311 @@
+/* 1. المتغيرات والأساسيات - Global Styles */
+:root {
+    --bg-deep: #0a192f;
+    --accent-orange: #ff5722;
+    --accent-teal: #64ffda;
+    --accent-pbi: #f2bf07;
+    --text-white: #ccd6f6;
+    --text-gray: #8892b0;
+    --glass-bg: rgba(17, 34, 64, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: radial-gradient(circle at top right, #1d3557, #0a192f 70%);
+    color: var(--text-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 2. الهيدر والقائمة العلوية - Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+    transition: 0.4s;
+}
+
+.logo:hover {
+    color: var(--accent-teal);
+    text-shadow: 0 0 20px rgba(100, 255, 218, 0.8);
+}
+
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav ul li a { text-decoration: none; color: #fff; font-size: 0.9rem; transition: 0.3s; }
+nav ul li a:hover { color: var(--accent-teal); }
+
+/* 3. واجهة الموقع - Hero Section */
+.hero {
+    padding: 80px 10%;
+    display: flex;
+    align-items: center;
+    min-height: 90vh;
+}
+
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 60px;
+}
+
+.hero-content { flex: 1.2; }
+
+.badge {
+    color: var(--accent-teal);
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h1 { font-size: 3.5rem; line-height: 1.1; margin: 10px 0; color: #fff; }
+
+.sub-headline { color: var(--text-gray); font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; }
+
+.job-container { display: flex; align-items: center; gap: 15px; margin: 15px 0; }
+.job-title { color: var(--text-gray); font-size: 1.8rem; }
+.job-icon { color: var(--accent-orange); font-size: 1.8rem; animation: bounce 2s infinite; }
+
+.description { max-width: 550px; color: var(--text-gray); line-height: 1.6; font-size: 1.05rem; }
+.description span { color: var(--accent-teal); font-weight: 600; }
+
+/* 4. الأزرار التفاعلية - Buttons Action */
+.btn-group { display: flex; gap: 20px; margin-top: 30px; }
+
+.btn-primary, .btn-secondary {
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--accent-orange);
+    color: #fff;
+    border: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-teal);
+    border: 1px solid var(--accent-teal);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 87, 34, 0.4);
+}
+
+.btn-secondary:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-5px);
+}
+
+/* 5. "أكشن" الصورة - Image Interactions */
+.image-frame {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(100, 255, 218, 0.15);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-frame:hover {
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(100, 255, 218, 0.2);
+    border-color: var(--accent-teal);
+}
+
+.image-frame img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.image-frame:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* 6. قسم المهارات (إدارية وتقنية) - Skills Section */
+.skills-section { padding: 100px 10%; background: rgba(2, 12, 27, 0.5); }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-size: 2.5rem; color: #fff; margin-top: 10px; }
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* هذا السطر سيجعلها 3 أعمدة تلقائياً إذا كانت الشاشة واسعة */
+    gap: 30px;
+}
+.skill-category {
+    background: rgba(17, 34, 64, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: 0.3s;
+}
+
+.skill-category:hover { transform: translateY(-10px); border-color: var(--accent-teal); }
+
+.category-title {
+    color: var(--accent-teal);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-title i { color: var(--accent-orange); }
+
+.skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.skill-tag {
+    background: rgba(100, 255, 218, 0.05);
+    color: var(--text-gray);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(136, 146, 176, 0.1);
+    transition: 0.3s;
+}
+
+.skill-tag:hover {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--accent-teal);
+    border-color: var(--accent-teal);
+}
+
+/* 7. قسم المشاريع - Projects Section */
+.projects-grid {
+    display: grid;
+    /* التعديل هنا: جعل العمودين متساويين تماماً */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px;
+    /* إضافة حدود قصوى للعرض لكي لا تصبح الصور ضخمة جداً في الشاشات الكبيرة */
+    max-width: 1000px;
+    margin: 0 auto; 
+}
+
+/* تعديل للموبايل: لكي تظهر المشاريع تحت بعضها في الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-card {
+    background: rgba(17, 34, 64, 0.5);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.project-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--accent-teal);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.project-img { height: 220px; background: #172a45; overflow: hidden; }
+.project-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.4s; }
+.project-card:hover .project-img img { opacity: 1; transform: scale(1.1); }
+
+.project-info { padding: 30px; }
+.project-info h3 { color: var(--accent-teal); margin-bottom: 15px; font-size: 1.4rem; }
+.project-info p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; }
+
+.tech-stack { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.tech-stack span {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--accent-teal);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.tech-stack span:hover {
+    background: rgba(242, 191, 7, 0.2);
+    color: var(--accent-pbi);
+    border-color: var(--accent-pbi);
+}
+
+/* الأنميشن - Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}  
+.contact-footer {
+    padding: 80px 20px;
+    background: #0a192f;
+    text-align: center;
+    border-top: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+    color: #fff;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+/* الألوان عند مرور الماوس */
+.whatsapp:hover { background: #25D366; border-color: #25D366; color: #fff; }
+.linkedin:hover { background: #0077B5; border-color: #0077B5; color: #fff; }
+.email:hover { background: var(--accent-teal); color: var(--bg-deep); }
+
+.contact-item i {
+    font-size: 1.2rem;
+} \\
